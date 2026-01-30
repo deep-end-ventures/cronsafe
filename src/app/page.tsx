@@ -6,8 +6,24 @@ function NavBar() {
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           <div className="flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" fill="none" className="h-8 w-8">
+              <defs>
+                <linearGradient id="cs-nav" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stopColor="#0d9488"/>
+                  <stop offset="100%" stopColor="#059669"/>
+                </linearGradient>
+              </defs>
+              <path d="M120 28 L200 65 L200 130 C200 175 165 210 120 225 C75 210 40 175 40 130 L40 65 Z" fill="url(#cs-nav)"/>
+              <path d="M120 44 L186 75 L186 130 C186 168 156 198 120 211 C84 198 54 168 54 130 L54 75 Z" fill="#ffffff" opacity="0.15"/>
+              <circle cx="120" cy="125" r="45" fill="none" stroke="#ffffff" strokeWidth="5" opacity="0.9"/>
+              <circle cx="120" cy="125" r="4" fill="#ffffff"/>
+              <line x1="120" y1="125" x2="103" y2="100" stroke="#ffffff" strokeWidth="5" strokeLinecap="round"/>
+              <line x1="120" y1="125" x2="145" y2="108" stroke="#ffffff" strokeWidth="3.5" strokeLinecap="round"/>
+              <circle cx="158" cy="163" r="18" fill="#059669" stroke="#ffffff" strokeWidth="3"/>
+              <polyline points="149,163 155,170 168,156" fill="none" stroke="#ffffff" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
             <span className="text-xl font-bold text-white">
-              ⏱ Cron<span className="text-brand-400">Safe</span>
+              Cron<span className="text-brand-400">Safe</span>
             </span>
           </div>
           <div className="flex items-center gap-4">
@@ -361,9 +377,27 @@ function Footer() {
     <footer className="border-t border-zinc-800/50 py-12">
       <div className="mx-auto max-w-6xl px-4">
         <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
-          <span className="text-lg font-bold text-white">
-            ⏱ Cron<span className="text-brand-400">Safe</span>
-          </span>
+          <div className="flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" fill="none" className="h-7 w-7">
+              <defs>
+                <linearGradient id="cs-footer" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stopColor="#0d9488"/>
+                  <stop offset="100%" stopColor="#059669"/>
+                </linearGradient>
+              </defs>
+              <path d="M120 28 L200 65 L200 130 C200 175 165 210 120 225 C75 210 40 175 40 130 L40 65 Z" fill="url(#cs-footer)"/>
+              <path d="M120 44 L186 75 L186 130 C186 168 156 198 120 211 C84 198 54 168 54 130 L54 75 Z" fill="#ffffff" opacity="0.15"/>
+              <circle cx="120" cy="125" r="45" fill="none" stroke="#ffffff" strokeWidth="5" opacity="0.9"/>
+              <circle cx="120" cy="125" r="4" fill="#ffffff"/>
+              <line x1="120" y1="125" x2="103" y2="100" stroke="#ffffff" strokeWidth="5" strokeLinecap="round"/>
+              <line x1="120" y1="125" x2="145" y2="108" stroke="#ffffff" strokeWidth="3.5" strokeLinecap="round"/>
+              <circle cx="158" cy="163" r="18" fill="#059669" stroke="#ffffff" strokeWidth="3"/>
+              <polyline points="149,163 155,170 168,156" fill="none" stroke="#ffffff" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+            <span className="text-lg font-bold text-white">
+              Cron<span className="text-brand-400">Safe</span>
+            </span>
+          </div>
           <p className="text-sm text-zinc-500">
             © {new Date().getFullYear()} CronSafe. Built by{" "}
             <a
