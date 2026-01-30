@@ -1,10 +1,23 @@
+import { createServerComponentClient } from "@/lib/supabase-server";
 import { NextRequest, NextResponse } from "next/server";
 
 /**
  * Test endpoint for webhook configuration.
  * Users can hit this to verify their webhook URL format.
+ * Requires authentication to prevent SSRF abuse.
  */
 export async function POST(request: NextRequest) {
+  // Require authentication
+  const supabase = createServerComponentClient();
+  const {
+    data: { user },
+    error: authError,
+  } = await supabase.auth.getUser();
+
+  if (authError || !user) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
+
   const body = await request.json().catch(() => null);
 
   if (!body?.webhook_url) {
