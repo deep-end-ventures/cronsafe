@@ -399,16 +399,16 @@ function Footer() {
             </span>
           </div>
           <p className="text-sm text-zinc-500">
-            © {new Date().getFullYear()} CronSafe. Built by{" "}
+            © {new Date().getFullYear()} CronSafe. A{" "}
             <a
-              href="https://deependventures.com"
+              href="https://deep-end-ventures.vercel.app"
               className="text-zinc-400 hover:text-white"
               target="_blank"
               rel="noopener noreferrer"
             >
               Deep End Ventures
             </a>
-            .
+            {" "}company.
           </p>
         </div>
       </div>
