@@ -16,6 +16,14 @@ export const metadata: Metadata = {
     "dead man's switch",
     "scheduled task monitoring",
   ],
+  icons: {
+    icon: [
+      { url: "/favicon.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+    ],
+    apple: "/apple-touch-icon.png",
+  },
   openGraph: {
     title: "CronSafe — Cron Job Monitoring Made Dead Simple",
     description:
@@ -23,11 +31,20 @@ export const metadata: Metadata = {
     url: "https://cronsafe.dev",
     siteName: "CronSafe",
     type: "website",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "CronSafe — Cron Job Monitoring Made Dead Simple",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "CronSafe — Cron Job Monitoring",
     description: "Your cron jobs fail silently. We don't.",
+    images: ["/og-image.png"],
   },
 };
 
