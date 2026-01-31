@@ -15,6 +15,6 @@ export const config = {
      * - api/ping (public ping endpoint)
      * - api/cron (cron endpoint - uses secret, not session)
      */
-    "/((?!_next/static|_next/image|favicon.ico|api/ping|api/cron|api/health|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)",
+    "/((?!_next/static|_next/image|favicon.ico|api/ping|api/cron|api/health|.*\\.(?:svg|png|jpg|jpeg|gif|webp|txt|xml)$).*)",
   ],
 };
