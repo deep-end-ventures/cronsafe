@@ -224,7 +224,7 @@ export default function PricingPage() {
         <div className="mx-auto max-w-6xl px-4 text-center">
           <p className="text-sm text-zinc-500">
             © {new Date().getFullYear()} CronSafe. A{' '}
-            <a href="https://deep-end-ventures-site-amber.vercel.app" className="text-zinc-400 hover:text-white" target="_blank" rel="noopener noreferrer">
+            <a href="https://deependventures.com" className="text-zinc-400 hover:text-white" target="_blank" rel="noopener noreferrer">
               Deep End Ventures
             </a>{' '}
             company.

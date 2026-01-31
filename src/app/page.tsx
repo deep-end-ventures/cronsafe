@@ -370,6 +370,82 @@ function PricingSection() {
   );
 }
 
+function FAQSection() {
+  const faqs = [
+    {
+      question: "What is cron job monitoring?",
+      answer: "Cron job monitoring tracks whether your scheduled tasks (cron jobs, background workers, pipelines) actually run on time. CronSafe gives each job a unique ping URL — if the ping doesn't arrive within the expected window, you get alerted instantly via email or webhook.",
+    },
+    {
+      question: "How does CronSafe work?",
+      answer: "Add a single curl command to the end of your cron job or script. Each time the job runs successfully, it pings your unique CronSafe URL. If CronSafe doesn't receive a ping within the expected interval (plus a configurable grace period), it triggers an alert.",
+    },
+    {
+      question: "Is CronSafe free?",
+      answer: "Yes! The free plan includes up to 3 monitors, email alerts, and 24-hour ping history. No credit card required. Upgrade to Pro ($9/mo) for unlimited monitors, Slack/Discord integration, and 90-day history.",
+    },
+    {
+      question: "What happens if my cron job fails silently?",
+      answer: "That's exactly what CronSafe prevents. Silent failures are the most dangerous — your job stops running but nobody notices until data is lost or users complain. CronSafe detects the missing ping and alerts you immediately.",
+    },
+    {
+      question: "Can I monitor Docker containers and Kubernetes jobs?",
+      answer: "Absolutely. CronSafe works with any scheduled task — cron jobs, Docker containers, Kubernetes CronJobs, Celery tasks, Sidekiq workers, or any process that can make an HTTP request. Just add a curl to your health check.",
+    },
+    {
+      question: "How is CronSafe different from Healthchecks.io or Cronitor?",
+      answer: "CronSafe offers a generous free tier, dead-simple setup (one curl command), and crypto-native payment for Pro. We focus on simplicity: no complex configuration, no agent to install, just a ping URL and instant alerts.",
+    },
+  ];
+
+  return (
+    <section className="py-20 sm:py-28 border-t border-zinc-800/50">
+      <div className="mx-auto max-w-3xl px-4">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-bold text-white sm:text-4xl">
+            Frequently Asked Questions
+          </h2>
+          <p className="mt-4 text-lg text-zinc-400">
+            Everything you need to know about cron job monitoring
+          </p>
+        </div>
+        <div className="space-y-6">
+          {faqs.map((faq) => (
+            <div
+              key={faq.question}
+              className="rounded-2xl border border-zinc-800 bg-zinc-900/30 p-6"
+            >
+              <h3 className="text-base font-semibold text-white mb-2">
+                {faq.question}
+              </h3>
+              <p className="text-sm text-zinc-400 leading-relaxed">
+                {faq.answer}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: faqs.map((faq) => ({
+              "@type": "Question",
+              name: faq.question,
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: faq.answer,
+              },
+            })),
+          }),
+        }}
+      />
+    </section>
+  );
+}
+
 function Footer() {
   return (
     <footer className="border-t border-zinc-800/50 py-12">
@@ -434,6 +510,7 @@ export default function LandingPage() {
       </section>
 
       <PricingSection />
+      <FAQSection />
       <Footer />
     </main>
   );
