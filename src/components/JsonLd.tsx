@@ -29,7 +29,7 @@ export function WebsiteJsonLd() {
         parentOrganization: {
           "@type": "Organization",
           name: "Deep End Ventures",
-          url: "https://deep-end-ventures-site-amber.vercel.app",
+          url: "https://deependventures.com",
         },
       },
       {
