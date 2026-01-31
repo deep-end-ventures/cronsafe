@@ -34,7 +34,7 @@ function NavBar() {
               Features
             </Link>
             <Link
-              href="#pricing"
+              href="/pricing"
               className="hidden text-sm text-zinc-400 hover:text-white sm:block"
             >
               Pricing
@@ -232,7 +232,7 @@ function FeaturesSection() {
       icon: "🆓",
       title: "Free Tier",
       description:
-        "Monitor up to 20 cron jobs for free. No credit card required. No trial expiration.",
+        "Monitor up to 3 cron jobs for free. Upgrade to Pro for unlimited monitors, Slack/Discord, and 90-day history.",
     },
   ];
 
@@ -300,21 +300,19 @@ function PricingSection() {
             </div>
             <ul className="mb-8 space-y-3 text-sm text-zinc-300">
               <li className="flex items-center gap-2">
-                <span className="text-green-500">✓</span> Up to 20 monitors
+                <span className="text-green-500">✓</span> Up to 3 monitors
               </li>
               <li className="flex items-center gap-2">
-                <span className="text-green-500">✓</span> 1-minute check
-                intervals
+                <span className="text-green-500">✓</span> 1 alert channel
               </li>
               <li className="flex items-center gap-2">
                 <span className="text-green-500">✓</span> Email alerts
               </li>
               <li className="flex items-center gap-2">
-                <span className="text-green-500">✓</span> Discord/Slack
-                webhooks
+                <span className="text-green-500">✓</span> 24-hour ping history
               </li>
               <li className="flex items-center gap-2">
-                <span className="text-green-500">✓</span> 7-day ping history
+                <span className="text-green-500">✓</span> Unique ping URLs
               </li>
             </ul>
             <Link
@@ -328,7 +326,7 @@ function PricingSection() {
           {/* Pro tier */}
           <div className="relative rounded-2xl border-2 border-brand-600 bg-zinc-900/50 p-8">
             <div className="absolute -top-3 left-6 rounded-full bg-brand-600 px-3 py-0.5 text-xs font-semibold text-white">
-              Coming Soon
+              RECOMMENDED
             </div>
             <div className="mb-4">
               <h3 className="text-lg font-semibold text-white">Pro</h3>
@@ -342,29 +340,28 @@ function PricingSection() {
                 <span className="text-green-500">✓</span> Unlimited monitors
               </li>
               <li className="flex items-center gap-2">
-                <span className="text-green-500">✓</span> 30-second check
-                intervals
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="text-green-500">✓</span> SMS &amp; phone call
-                alerts
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="text-green-500">✓</span> Team members
+                <span className="text-green-500">✓</span> Unlimited alert channels
               </li>
               <li className="flex items-center gap-2">
                 <span className="text-green-500">✓</span> 90-day ping history
               </li>
               <li className="flex items-center gap-2">
-                <span className="text-green-500">✓</span> Status page
+                <span className="text-green-500">✓</span> Slack &amp; Discord integration
+              </li>
+              <li className="flex items-center gap-2">
+                <span className="text-green-500">✓</span> SMS &amp; phone call alerts
+              </li>
+              <li className="flex items-center gap-2">
+                <span className="text-green-500">✓</span> Team members
               </li>
             </ul>
-            <button
-              disabled
-              className="block w-full rounded-lg bg-brand-600/50 py-2.5 text-center text-sm font-medium text-white/60 cursor-not-allowed"
+            <Link
+              href="/pricing"
+              className="block w-full rounded-lg bg-brand-600 py-2.5 text-center text-sm font-semibold text-white hover:bg-brand-500 transition-colors"
             >
-              Coming Soon
-            </button>
+              Upgrade to Pro — $9/mo
+            </Link>
+            <p className="mt-2 text-center text-xs text-zinc-500">Pay with USDC on Base</p>
           </div>
         </div>
       </div>

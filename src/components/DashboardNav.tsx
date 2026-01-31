@@ -1,12 +1,20 @@
 "use client";
 
 import { createBrowserSupabaseClient } from "@/lib/supabase";
+import { ProBadge } from "@/components/ProBadge";
+import { isPro } from "@/lib/subscription";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 export function DashboardNav({ userEmail }: { userEmail?: string }) {
   const router = useRouter();
   const supabase = createBrowserSupabaseClient();
+  const [isProUser, setIsProUser] = useState(false);
+
+  useEffect(() => {
+    setIsProUser(isPro());
+  }, []);
 
   const handleSignOut = async () => {
     await supabase.auth.signOut();
@@ -41,8 +49,17 @@ export function DashboardNav({ userEmail }: { userEmail?: string }) {
             <span className="hidden sm:block text-sm text-zinc-500">
               Dashboard
             </span>
+            <ProBadge />
           </div>
           <div className="flex items-center gap-4">
+            {!isProUser && (
+              <Link
+                href="/pricing"
+                className="hidden sm:block text-xs font-medium text-brand-400 hover:text-brand-300 transition-colors"
+              >
+                Upgrade to Pro
+              </Link>
+            )}
             {userEmail && (
               <span className="hidden sm:block text-sm text-zinc-400 truncate max-w-[200px]">
                 {userEmail}
