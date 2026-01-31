@@ -401,7 +401,7 @@ function Footer() {
           <p className="text-sm text-zinc-500">
             © {new Date().getFullYear()} CronSafe. A{" "}
             <a
-              href="https://deep-end-ventures.vercel.app"
+              href="https://deep-end-ventures-site-amber.vercel.app"
               className="text-zinc-400 hover:text-white"
               target="_blank"
               rel="noopener noreferrer"
