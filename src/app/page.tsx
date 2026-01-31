@@ -1,4 +1,5 @@
 import Link from "next/link";
+import EmailCapture from "@/components/EmailCapture";
 
 function NavBar() {
   return (
@@ -420,6 +421,18 @@ export default function LandingPage() {
       <HeroSection />
       <HowItWorksSection />
       <FeaturesSection />
+
+      {/* Email Capture */}
+      <section className="py-16 sm:py-20">
+        <div className="mx-auto max-w-xl px-4">
+          <EmailCapture
+            heading="Stay Sharp on Cron Monitoring"
+            subheading="Get DevOps reliability tips, cron job best practices, and CronSafe product updates. No spam — unsubscribe anytime."
+            source="homepage"
+          />
+        </div>
+      </section>
+
       <PricingSection />
       <Footer />
     </main>

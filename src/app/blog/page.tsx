@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { blogPosts } from "@/content/blog";
+import EmailCapture from "@/components/EmailCapture";
 
 export const metadata: Metadata = {
   title: "Blog — CronSafe | Cron Job Monitoring Guides & Best Practices",
@@ -76,6 +77,17 @@ export default function BlogPage() {
               </span>
             </Link>
           ))}
+        </div>
+      </section>
+
+      {/* Email Capture */}
+      <section className="py-12">
+        <div className="max-w-xl mx-auto px-4">
+          <EmailCapture
+            heading="Get Cron Monitoring Tips in Your Inbox"
+            subheading="Practical guides on reliability, debugging scheduled tasks, and CronSafe updates. Free, no spam."
+            source="blog-listing"
+          />
         </div>
       </section>
 

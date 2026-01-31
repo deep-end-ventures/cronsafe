@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getBlogPost, getAllSlugs } from "@/content/blog";
 import { BlogPostJsonLd } from "@/components/JsonLd";
+import EmailCapture from "@/components/EmailCapture";
 
 export function generateStaticParams() {
   return getAllSlugs().map((slug) => ({ slug }));
@@ -119,8 +120,17 @@ export default async function BlogPostPage({
         </div>
       </article>
 
+      {/* Email Capture — inline after article */}
+      <div className="max-w-3xl mx-auto px-4 mt-8">
+        <EmailCapture
+          variant="inline"
+          heading="Enjoyed this post? Get more DevOps tips →"
+          source="blog-post"
+        />
+      </div>
+
       {/* CTA */}
-      <section className="py-16 border-t border-zinc-800">
+      <section className="py-16 border-t border-zinc-800 mt-12">
         <div className="max-w-3xl mx-auto px-4 text-center">
           <h2 className="text-2xl font-bold text-white mb-4">
             Start Monitoring Your Cron Jobs
