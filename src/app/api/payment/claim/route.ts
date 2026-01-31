@@ -1,14 +1,16 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
 
-// Central Supabase for payment events (CronSafe's own instance)
-const centralSupabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.SUPABASE_SERVICE_ROLE_KEY!,
-  {
-    auth: { autoRefreshToken: false, persistSession: false },
-  }
-);
+// Lazy-init Supabase client to avoid build-time env var errors
+function getCentralSupabase() {
+  return createClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.SUPABASE_SERVICE_ROLE_KEY!,
+    {
+      auth: { autoRefreshToken: false, persistSession: false },
+    }
+  );
+}
 
 export async function POST(request: NextRequest) {
   try {
@@ -21,6 +23,8 @@ export async function POST(request: NextRequest) {
         { status: 400 }
       );
     }
+
+    const centralSupabase = getCentralSupabase();
 
     // Insert into payment_events table
     const { data, error } = await centralSupabase
