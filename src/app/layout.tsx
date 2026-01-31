@@ -2,11 +2,13 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { WebsiteJsonLd } from "@/components/JsonLd";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || "https://cronsafe-one.vercel.app"),
   title: "CronSafe — Cron Job Monitoring Made Dead Simple",
   description:
     "Your cron jobs fail silently. We don't. Dead-simple monitoring for cron jobs, background tasks, and scheduled pipelines. Get alerted when things stop running.",
@@ -57,6 +59,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
+      <head>
+        <WebsiteJsonLd />
+        <link rel="alternate" type="application/rss+xml" title="CronSafe Blog" href="/blog/rss.xml" />
+      </head>
       <body className={`${inter.className} antialiased`}>
         {children}
         <Analytics />
