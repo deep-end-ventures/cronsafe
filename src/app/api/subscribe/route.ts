@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
+import { rateLimit, getClientIp } from "@/lib/rate-limit";
 
 const FROM_EMAIL = "CronSafe <hello@deependventures.com>";
 const AUDIENCE_NAME = "CronSafe Subscribers";
@@ -32,6 +33,16 @@ async function getOrCreateAudience(): Promise<string> {
 
 export async function POST(req: NextRequest) {
   try {
+    // Rate limit: 5 requests per IP per minute
+    const ip = getClientIp(req);
+    const rl = rateLimit(`subscribe:${ip}`, { limit: 5, windowSeconds: 60 });
+    if (!rl.success) {
+      return NextResponse.json(
+        { error: "Too many requests. Please try again later." },
+        { status: 429, headers: { "Retry-After": String(Math.ceil((rl.reset - Date.now()) / 1000)) } }
+      );
+    }
+
     const { email, source } = await req.json();
 
     if (!email || typeof email !== "string" || !email.includes("@")) {

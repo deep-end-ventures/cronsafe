@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
+import { createServerComponentClient } from '@/lib/supabase-server';
 
 // Lazy-init Supabase client to avoid build-time env var errors
 function getCentralSupabase() {
@@ -14,12 +15,27 @@ function getCentralSupabase() {
 
 export async function POST(request: NextRequest) {
   try {
+    // Require authentication — only logged-in users can claim payments
+    const supabase = createServerComponentClient();
+    const { data: { user }, error: authError } = await supabase.auth.getUser();
+    if (authError || !user) {
+      return NextResponse.json({ error: 'Authentication required' }, { status: 401 });
+    }
+
     const body = await request.json();
     const { email, plan, tx_hash, amount, payment_ref } = body;
 
     if (!email || !plan || !amount) {
       return NextResponse.json(
         { error: 'Missing required fields: email, plan, amount' },
+        { status: 400 }
+      );
+    }
+
+    // Require tx_hash — payment must have a blockchain transaction
+    if (!tx_hash) {
+      return NextResponse.json(
+        { error: 'Transaction hash is required to claim a payment' },
         { status: 400 }
       );
     }

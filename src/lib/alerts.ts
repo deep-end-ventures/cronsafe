@@ -1,6 +1,7 @@
 import { Monitor, formatInterval } from "@/types";
 import { sendAlertEmail, sendRecoveryEmail } from "./resend";
 import { createAdminSupabaseClient } from "./supabase";
+import { validateUrlNotInternal } from "./ssrf-protection";
 
 const APP_URL =
   process.env.NEXT_PUBLIC_APP_URL || "https://cronsafe.dev";
@@ -77,6 +78,9 @@ export async function sendWebhookAlert(
   };
 
   try {
+    // SSRF protection: reject internal/private IPs
+    await validateUrlNotInternal(webhookUrl);
+
     const response = await fetch(webhookUrl, {
       method: "POST",
       headers: { "Content-Type": "application/json" },

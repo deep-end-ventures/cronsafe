@@ -1,4 +1,5 @@
 import { createServerComponentClient } from "@/lib/supabase-server";
+import { validateUrlNotInternal } from "@/lib/ssrf-protection";
 import { NextRequest, NextResponse } from "next/server";
 
 /**
@@ -32,6 +33,16 @@ export async function POST(request: NextRequest) {
     if (!["http:", "https:"].includes(url.protocol)) {
       return NextResponse.json(
         { error: "Only http and https URLs are supported" },
+        { status: 400 }
+      );
+    }
+
+    // SSRF protection: reject internal/private IPs
+    try {
+      await validateUrlNotInternal(body.webhook_url);
+    } catch (ssrfErr) {
+      return NextResponse.json(
+        { error: "Webhook URL targets a blocked address. Only public URLs are allowed." },
         { status: 400 }
       );
     }

@@ -89,6 +89,13 @@ export async function POST(request: NextRequest) {
 
 // GET endpoint to retrieve metrics for a specific startup
 export async function GET(request: NextRequest) {
+  // Auth check — require the same service role key as POST
+  const authHeader = request.headers.get('authorization')
+  const expectedKey = process.env.SUPABASE_SERVICE_ROLE_KEY
+  if (!authHeader || authHeader !== `Bearer ${expectedKey}`) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+  }
+
   const { searchParams } = new URL(request.url)
   const startupId = searchParams.get('startup_id')
 

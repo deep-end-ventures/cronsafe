@@ -2,6 +2,16 @@ import { Resend } from "resend";
 
 let resendClient: Resend | null = null;
 
+/** HTML-escape user-supplied values to prevent XSS in email templates */
+function escapeHtml(str: string): string {
+  return str
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
 function getResendClient(): Resend {
   if (!resendClient) {
     if (!process.env.RESEND_API_KEY) {
@@ -35,11 +45,15 @@ export async function sendAlertEmail({
     ? new Date(lastPingAt).toUTCString()
     : "Never";
 
+  // Escape all user-supplied values to prevent XSS in email HTML
+  const safeMonitorName = escapeHtml(monitorName);
+  const safeMonitorSlug = escapeHtml(monitorSlug);
+
   try {
     const { error } = await resend.emails.send({
       from: "CronSafe <alerts@cronsafe.dev>",
       to: [to],
-      subject: `🚨 Monitor DOWN: ${monitorName}`,
+      subject: `🚨 Monitor DOWN: ${safeMonitorName}`,
       html: `
 <!DOCTYPE html>
 <html>
@@ -61,13 +75,13 @@ export async function sendAlertEmail({
       </div>
       
       <h1 style="color: #ffffff; font-size: 20px; font-weight: 600; text-align: center; margin: 0 0 24px;">
-        ${monitorName}
+        ${safeMonitorName}
       </h1>
       
       <table style="width: 100%; border-collapse: collapse;">
         <tr>
           <td style="padding: 12px 0; border-bottom: 1px solid #27272a; color: #a1a1aa; font-size: 14px;">Monitor ID</td>
-          <td style="padding: 12px 0; border-bottom: 1px solid #27272a; color: #ffffff; font-size: 14px; text-align: right; font-family: monospace;">${monitorSlug}</td>
+          <td style="padding: 12px 0; border-bottom: 1px solid #27272a; color: #ffffff; font-size: 14px; text-align: right; font-family: monospace;">${safeMonitorSlug}</td>
         </tr>
         <tr>
           <td style="padding: 12px 0; border-bottom: 1px solid #27272a; color: #a1a1aa; font-size: 14px;">Expected</td>
@@ -119,11 +133,13 @@ export async function sendRecoveryEmail({
 }: SendRecoveryEmailParams): Promise<{ success: boolean; error?: string }> {
   const resend = getResendClient();
 
+  const safeMonitorName = escapeHtml(monitorName);
+
   try {
     const { error } = await resend.emails.send({
       from: "CronSafe <alerts@cronsafe.dev>",
       to: [to],
-      subject: `✅ Monitor RECOVERED: ${monitorName}`,
+      subject: `✅ Monitor RECOVERED: ${safeMonitorName}`,
       html: `
 <!DOCTYPE html>
 <html>
@@ -143,7 +159,7 @@ export async function sendRecoveryEmail({
           Recovered
         </div>
       </div>
-      <h1 style="color: #ffffff; font-size: 20px; font-weight: 600; margin: 0 0 12px;">${monitorName}</h1>
+      <h1 style="color: #ffffff; font-size: 20px; font-weight: 600; margin: 0 0 12px;">${safeMonitorName}</h1>
       <p style="color: #a1a1aa; font-size: 14px; margin: 0;">This monitor is back online and pinging normally.</p>
     </div>
     
