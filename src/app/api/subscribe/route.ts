@@ -85,7 +85,7 @@ export async function POST(req: NextRequest) {
             <li>New CronSafe features & product updates</li>
           </ul>
           <p style="color: #27272a; font-size: 16px; line-height: 1.6;">
-            While you're here — <a href="https://cronsafe-one.vercel.app" style="color: #0d9488; text-decoration: none; font-weight: 600;">start monitoring your cron jobs for free</a>. Setup takes 60 seconds.
+            While you're here — <a href="https://cronsafe.deependventures.com" style="color: #0d9488; text-decoration: none; font-weight: 600;">start monitoring your cron jobs for free</a>. Setup takes 60 seconds.
           </p>
           <div style="margin-top: 32px; padding-top: 24px; border-top: 1px solid #e4e4e7;">
             <p style="color: #a1a1aa; font-size: 13px;">

@@ -230,7 +230,7 @@ export default function HeartbeatMonitoringPage() {
               <pre className="p-4 text-sm font-mono text-zinc-300 overflow-x-auto">
 {`# Run backup, then ping CronSafe
 /opt/backup.sh && \\
-  curl -fsS https://cronsafe.dev/ping/abc123`}
+  curl -fsS https://cronsafe.deependventures.com/ping/abc123`}
               </pre>
             </div>
             <div className="rounded-xl border border-zinc-800 bg-zinc-900/80 overflow-hidden">
@@ -243,7 +243,7 @@ export default function HeartbeatMonitoringPage() {
 def run_job():
     process_data()
     # Heartbeat: tell CronSafe we're alive
-    requests.get("https://cronsafe.dev/ping/abc123")`}
+    requests.get("https://cronsafe.deependventures.com/ping/abc123")`}
               </pre>
             </div>
             <div className="rounded-xl border border-zinc-800 bg-zinc-900/80 overflow-hidden">
@@ -253,7 +253,7 @@ def run_job():
               <pre className="p-4 text-sm font-mono text-zinc-300 overflow-x-auto">
 {`// Long-running worker heartbeat
 setInterval(async () => {
-  await fetch("https://cronsafe.dev/ping/abc123");
+  await fetch("https://cronsafe.deependventures.com/ping/abc123");
 }, 5 * 60 * 1000); // every 5 min`}
               </pre>
             </div>
@@ -265,7 +265,7 @@ setInterval(async () => {
 {`# Dockerfile healthcheck + heartbeat
 HEALTHCHECK --interval=5m CMD \\
   curl -f http://localhost/health && \\
-  curl -fsS https://cronsafe.dev/ping/abc123`}
+  curl -fsS https://cronsafe.deependventures.com/ping/abc123`}
               </pre>
             </div>
           </div>

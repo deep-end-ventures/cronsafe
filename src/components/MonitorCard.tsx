@@ -63,7 +63,7 @@ export function MonitorCard({ monitor }: { monitor: Monitor }) {
   const appUrl =
     typeof window !== "undefined"
       ? window.location.origin
-      : process.env.NEXT_PUBLIC_APP_URL || "https://cronsafe.dev";
+      : process.env.NEXT_PUBLIC_APP_URL || "https://cronsafe.deependventures.com";
 
   const pingUrl = `${appUrl}/api/ping/${monitor.slug}`;
 

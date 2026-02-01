@@ -2,7 +2,7 @@ import { MetadataRoute } from "next";
 import { getAllSlugs } from "@/content/blog";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://cronsafe-one.vercel.app";
+  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://cronsafe.deependventures.com";
 
   const blogSlugs = getAllSlugs();
 

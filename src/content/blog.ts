@@ -67,7 +67,7 @@ Here's how to add monitoring to any cron job:
 /usr/bin/python3 /app/generate_report.py
 
 # Ping CronSafe on success
-curl -fsS --retry 3 https://cronsafe-one.vercel.app/api/ping/YOUR_MONITOR_ID
+curl -fsS --retry 3 https://cronsafe.deependventures.com/api/ping/YOUR_MONITOR_ID
 \`\`\`
 
 ### Python
@@ -81,7 +81,7 @@ def main():
     send_invoices()
 
     # Ping CronSafe on success
-    requests.get("https://cronsafe-one.vercel.app/api/ping/YOUR_MONITOR_ID", timeout=10)
+    requests.get("https://cronsafe.deependventures.com/api/ping/YOUR_MONITOR_ID", timeout=10)
 
 if __name__ == "__main__":
     main()
@@ -95,7 +95,7 @@ async function main() {
   await processQueue();
 
   // Ping CronSafe on success
-  await fetch("https://cronsafe-one.vercel.app/api/ping/YOUR_MONITOR_ID");
+  await fetch("https://cronsafe.deependventures.com/api/ping/YOUR_MONITOR_ID");
 }
 \`\`\`
 
@@ -104,7 +104,7 @@ async function main() {
 \`\`\`yaml
 - name: Ping CronSafe
   if: success()
-  run: curl -fsS https://cronsafe-one.vercel.app/api/ping/\${{ secrets.CRONSAFE_MONITOR_ID }}
+  run: curl -fsS https://cronsafe.deependventures.com/api/ping/\${{ secrets.CRONSAFE_MONITOR_ID }}
 \`\`\`
 
 ## What to Monitor
@@ -141,9 +141,9 @@ For critical jobs, send different pings for success and failure:
 \`\`\`bash
 /app/backup.sh
 if [ $? -eq 0 ]; then
-  curl https://cronsafe-one.vercel.app/api/ping/MONITOR_ID
+  curl https://cronsafe.deependventures.com/api/ping/MONITOR_ID
 else
-  curl https://cronsafe-one.vercel.app/api/ping/MONITOR_ID?status=fail
+  curl https://cronsafe.deependventures.com/api/ping/MONITOR_ID?status=fail
 fi
 \`\`\`
 
@@ -341,7 +341,7 @@ set -euo pipefail
 /app/nightly-report.sh
 
 # Ping monitoring service on success
-curl -fsS --retry 3 https://cronsafe-one.vercel.app/api/ping/YOUR_MONITOR_ID
+curl -fsS --retry 3 https://cronsafe.deependventures.com/api/ping/YOUR_MONITOR_ID
 \`\`\`
 
 If the ping doesn't arrive on schedule, [CronSafe](/) alerts you immediately. This catches every failure mode — including ones you can't predict.
@@ -469,7 +469,7 @@ Cron monitoring uses a **reverse ping** pattern (also called a "dead man's switc
 
 \`\`\`bash
 # At the end of your cron job
-curl -fsS https://cronsafe-one.vercel.app/api/ping/YOUR_MONITOR_ID
+curl -fsS https://cronsafe.deependventures.com/api/ping/YOUR_MONITOR_ID
 \`\`\`
 
 This is fundamentally different from uptime monitoring because:

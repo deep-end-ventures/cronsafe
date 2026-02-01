@@ -8,7 +8,7 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || "https://cronsafe-one.vercel.app"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || "https://cronsafe.deependventures.com"),
   title: "CronSafe — Cron Job Monitoring Made Dead Simple",
   description:
     "Your cron jobs fail silently. We don't. Dead-simple monitoring for cron jobs, background tasks, and scheduled pipelines. Get alerted when things stop running.",
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     title: "CronSafe — Cron Job Monitoring Made Dead Simple",
     description:
       "Your cron jobs fail silently. We don't. Get alerted when your scheduled tasks stop running.",
-    url: "https://cronsafe.dev",
+    url: "https://cronsafe.deependventures.com",
     siteName: "CronSafe",
     type: "website",
     images: [

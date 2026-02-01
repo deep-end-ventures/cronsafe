@@ -4,7 +4,7 @@ import { createAdminSupabaseClient } from "./supabase";
 import { validateUrlNotInternal } from "./ssrf-protection";
 
 const APP_URL =
-  process.env.NEXT_PUBLIC_APP_URL || "https://cronsafe.dev";
+  process.env.NEXT_PUBLIC_APP_URL || "https://cronsafe.deependventures.com";
 
 interface AlertResult {
   type: "email" | "webhook";

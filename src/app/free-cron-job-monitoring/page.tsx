@@ -165,7 +165,7 @@ export default function FreeCronJobMonitoringPage() {
                 <div className="text-red-400/70">0 2 * * * /opt/backup.sh</div>
                 <div className="mt-3 text-zinc-500"># After — monitored with CronSafe</div>
                 <div className="text-green-400">
-                  0 2 * * * /opt/backup.sh <span className="text-brand-400">&amp;&amp;</span> curl -fsS https://cronsafe.dev/ping/<span className="text-amber-400">your-id</span>
+                  0 2 * * * /opt/backup.sh <span className="text-brand-400">&amp;&amp;</span> curl -fsS https://cronsafe.deependventures.com/ping/<span className="text-amber-400">your-id</span>
                 </div>
               </div>
             </div>

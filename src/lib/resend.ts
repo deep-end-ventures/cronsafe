@@ -51,7 +51,7 @@ export async function sendAlertEmail({
 
   try {
     const { error } = await resend.emails.send({
-      from: "CronSafe <alerts@cronsafe.dev>",
+      from: "CronSafe <alerts@deependventures.com>",
       to: [to],
       subject: `🚨 Monitor DOWN: ${safeMonitorName}`,
       html: `
@@ -137,7 +137,7 @@ export async function sendRecoveryEmail({
 
   try {
     const { error } = await resend.emails.send({
-      from: "CronSafe <alerts@cronsafe.dev>",
+      from: "CronSafe <alerts@deependventures.com>",
       to: [to],
       subject: `✅ Monitor RECOVERED: ${safeMonitorName}`,
       html: `

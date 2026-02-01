@@ -123,7 +123,7 @@ function HeroSection() {
               <div className="text-green-400">
                 0 * * * * /usr/bin/backup.sh{" "}
                 <span className="text-brand-400">&amp;&amp;</span> curl -fsS
-                https://cronsafe.dev/api/ping/
+                https://cronsafe.deependventures.com/api/ping/
                 <span className="text-amber-400">abc123</span>
               </div>
             </div>

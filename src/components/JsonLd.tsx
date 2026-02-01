@@ -1,5 +1,5 @@
 export function WebsiteJsonLd() {
-  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://cronsafe-one.vercel.app";
+  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://cronsafe.deependventures.com";
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -68,7 +68,7 @@ export function BlogPostJsonLd({
   date: string;
   slug: string;
 }) {
-  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://cronsafe-one.vercel.app";
+  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://cronsafe.deependventures.com";
 
   const jsonLd = {
     "@context": "https://schema.org",
