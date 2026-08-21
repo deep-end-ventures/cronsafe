@@ -2,7 +2,8 @@ import { MetadataRoute } from "next";
 import { getAllSlugs } from "@/content/blog";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://cronsafe.deependventures.com";
+  // Hardcoded to prevent Vercel env var override (NEXT_PUBLIC_APP_URL was set to old vercel.app domain)
+  const baseUrl = "https://cronsafe.deependventures.com";
 
   const blogSlugs = getAllSlugs();
 

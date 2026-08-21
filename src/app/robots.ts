@@ -1,7 +1,8 @@
 import { MetadataRoute } from "next";
 
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://cronsafe.deependventures.com";
+  // Hardcoded to prevent Vercel env var override
+  const baseUrl = "https://cronsafe.deependventures.com";
 
   return {
     rules: [
