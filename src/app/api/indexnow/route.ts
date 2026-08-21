@@ -2,8 +2,8 @@ import { NextResponse } from "next/server";
 import { getAllSlugs } from "@/content/blog";
 
 const INDEXNOW_KEY = "4f11746b5428ba5244f19bb03a7667e0";
-const BASE_URL =
-  process.env.NEXT_PUBLIC_APP_URL || "https://cronsafe.deependventures.com";
+// Hardcoded to ensure correct URLs are always submitted
+const BASE_URL = "https://cronsafe.deependventures.com";
 
 function getAllUrls(): string[] {
   const blogSlugs = getAllSlugs();
