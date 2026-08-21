@@ -60,10 +60,11 @@ export function MonitorCard({ monitor }: { monitor: Monitor }) {
   const [showConfirm, setShowConfirm] = useState(false);
   const [toggling, setToggling] = useState(false);
 
+  // Use window.location.origin on client, hardcoded fallback for SSR (prevents env var override)
   const appUrl =
     typeof window !== "undefined"
       ? window.location.origin
-      : process.env.NEXT_PUBLIC_APP_URL || "https://cronsafe.deependventures.com";
+      : "https://cronsafe.deependventures.com";
 
   const pingUrl = `${appUrl}/api/ping/${monitor.slug}`;
 

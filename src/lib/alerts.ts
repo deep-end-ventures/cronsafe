@@ -3,8 +3,8 @@ import { sendAlertEmail, sendRecoveryEmail } from "./resend";
 import { createAdminSupabaseClient } from "./supabase";
 import { validateUrlNotInternal } from "./ssrf-protection";
 
-const APP_URL =
-  process.env.NEXT_PUBLIC_APP_URL || "https://cronsafe.deependventures.com";
+// Hardcoded to prevent Vercel env var override
+const APP_URL = "https://cronsafe.deependventures.com";
 
 interface AlertResult {
   type: "email" | "webhook";
